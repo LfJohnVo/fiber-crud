@@ -1,4 +1,5 @@
-### Go template
+### Go ignore
+.idea
 # Binaries for programs and plugins
 *.exe
 *.exe~
