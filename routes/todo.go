@@ -5,7 +5,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-//Ruta uno, get all
+//Ruta Todos
 func TodoRoute(route fiber.Router) {
 	route.Get("", controllers.GetTodos)
 	route.Post("", controllers.CreateTodo)
@@ -14,5 +14,4 @@ func TodoRoute(route fiber.Router) {
 	route.Get("/:id", controllers.GetTodo)
 }
 
-//Todo routes
 

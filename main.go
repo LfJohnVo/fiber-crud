@@ -3,8 +3,11 @@ package main
 import (
 	"fmt"
 	"github.com/LfJohnVo/fiber-crud/routes"
+	swagger "github.com/arsmn/fiber-swagger/v2"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+
+
 )
 
 func main() {
@@ -13,7 +16,15 @@ func main() {
 
 	//Middleware que ademas de restringir, permite observar los movimientos dentro de la consola
 	app.Use(logger.New()) // new
+
 	setupRoutes(app)
+
+	// Add endpoint to serve swagger documentation
+	app.Get("/docs/*", swagger.New(swagger.Config{ // custom
+		URL: "/docs/doc.json",
+		DeepLinking: false,
+	}))
+
 	err := app.Listen(":8000")
 
 	if err != nil {
@@ -43,8 +54,10 @@ func setupRoutes(app *fiber.App) {
 	})
 
 
-
 	// connect todo routes
 	routes.TodoRoute(api.Group("/todos"))
+
+	// connect docs routes
+	//routes.DocRoute(api.Group("/docs"))
 
 }
