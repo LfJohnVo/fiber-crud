@@ -42,6 +42,8 @@ func setupRoutes(app *fiber.App) {
 		})
 	})
 
+
+
 	// connect todo routes
 	routes.TodoRoute(api.Group("/todos"))
 
