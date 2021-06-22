@@ -13,5 +13,3 @@ func TodoRoute(route fiber.Router) {
 	route.Delete("/:id", controllers.DeleteTodo)
 	route.Get("/:id", controllers.GetTodo)
 }
-
-
